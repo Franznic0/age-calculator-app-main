@@ -1,0 +1,27 @@
+
+@media screen and (min-width:570px) {
+    .container {
+        margin: 4rem auto auto;
+    }    
+
+    .user-input-wrap {
+        max-width: 400px;
+    }
+    
+    .error-message {
+        font-size: .4rem;
+    }
+
+    .user-input-submit:hover {
+        background-color: var(--clr-font-pr);
+        transition: .3s;
+    }
+
+    .user-input-divider {
+        justify-content: right;
+    }
+
+    .user-output {
+        font-size: 2.5rem;
+    }
+}
