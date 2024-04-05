@@ -102,20 +102,33 @@ body {
 .error-message {
     display: block;
     content: "";
-    height: .4rem;
+    height: .5rem;
+    padding: .1rem;
 
-    font-size: .3rem;
+    font-size: clamp(8px, 2vw, 10px);
     font-weight: var(--fw-small);
     font-style: italic;
 
     color: var(--clr-error);
 }
 
-.input-label.error {
+#user-day.error .input-label, 
+#user-month.error .input-label,
+#user-year.error .input-label
+{
     color: var(--clr-error);
 }
+#user-day.error .error-message, 
+#user-month.error .error-message, 
+#user-year.error .error-message 
+{
+    display: block;
+}
 
-.error {
+#user-day.error .input,
+#user-month.error .input, 
+#user-year.error .input 
+{
     border-color: var(--clr-error);
 }
 

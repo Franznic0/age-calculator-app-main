@@ -16,28 +16,28 @@
 
   <div class="container">
 
-    <form class="user-input" action="/">
+    <form class="user-input">
 
       <div class="user-input-wrap">
-        <div class="user-input-wrap-details">
+        <div id="user-day" class="user-input-wrap-details">
           <label class="input-label" for="day">day</label>
-          <input class="input" id="day" name="day" type="number" placeholder="DD" maxlength="2" value="">
+          <input class="input" id="day" name="day" type="number" placeholder="DD" maxlength="2" min="1" max="31" value="">
           <div class="error-message day-error"></div>
         </div>
-        <div class="user-input-wrap-details">
+        <div id="user-month" class="user-input-wrap-details">
           <label class="input-label" for="month">month</label>
-          <input class="input" id="month" name="month" type="number" placeholder="MM" maxlength="2" value="">
+          <input class="input" id="month" name="month" type="number" placeholder="MM" maxlength="2" min="1" max="12" value="">
           <div class="error-message month-error"></div>
         </div>
-        <div class="user-input-wrap-details">
+        <div id="user-year" class="user-input-wrap-details">
           <label class="input-label" for="year">year</label>
-          <input class="input" id="year" name="year" type="number" placeholder="YYYY" maxlength="4" value="">
+          <input class="input" id="year" name="year" type="number" placeholder="YYYY" maxlength="4" min="0" value="">
           <div class="error-message year-error"></div>
         </div>
       </div>
 
       <div class="user-input-divider">
-        <button id="user-submit" class="user-input-submit" type="submit" value="submit">
+        <button id="user-submit" class="user-input-submit" type="button" value="submit" onclick="handleSubmit()">
           <img src="./assets/images/icon-arrow.svg" alt="">
         </button>
       </div>
