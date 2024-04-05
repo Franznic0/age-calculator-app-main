@@ -91,6 +91,8 @@ body {
     border: 1px solid var(--clr-primary);
 }
 
+
+
 .error-message {
     display: block;
     content: "";
@@ -103,11 +105,11 @@ body {
     color: var(--clr-error);
 }
 
-.input-label .error {
+.input-label.error {
     color: var(--clr-error);
 }
 
-.input .error{
+.error {
     border-color: var(--clr-error);
 }
 
