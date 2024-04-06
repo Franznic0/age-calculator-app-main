@@ -69,7 +69,6 @@ let d = 0;
 let m = 0;
 
 function handleSubmit() {
-
     // check calendar validity
     if (dUser.value > months[mUser.value-1]) {
         document.querySelector("#user-day").classList.add("error");
@@ -108,34 +107,24 @@ function handleSubmit() {
         yError.innerHTML = "This field is required";
         return;
     }
-    
+
     // calculate age
     if (d < 0) {
-        dCurrent = dCurrent + months[mCurrent - 1];
+        dCurrent = dCurrent + months[mUser.value-1];
         mCurrent -= 1;
-    } 
+    };
+
     if (m < 0) {
         mCurrent += 12;
         yCurrent -= 1;
-    }
+    };
     
     const dResult = dCurrent - dUser.value;
     const mResult = mCurrent - mUser.value;
     const yResult = yCurrent - yUser.value;
-    
+
     dOut.innerHTML = dResult;
     mOut.innerHTML = mResult;
     yOut.innerHTML = yResult;
-
-    // if (dUser.value > dCurrent) {
-    //     dCurrent = dCurrent + months[mCurrent - 1];
-    //     mCurrent = mCurrent - 1;
-    // }
-    // if (mUser.value > mCurrent) {
-    //     mCurrent = mCurrent + 12;
-    //     yCurrent = yCurrent - 1;
-    // }
-
-    
 };
 validateInput();

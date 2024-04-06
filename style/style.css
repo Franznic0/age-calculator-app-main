@@ -41,8 +41,17 @@ html {
     cursor: default;
 }
 
+::selection {
+    background-color: var(--clr-primary);
+    color: var(--clr-background-sec);
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--clr-background-sec);
+    min-height: 100vh;
 }
 /* container */
 .container {
@@ -174,7 +183,7 @@ body {
 }
 /* footer */
 .attribution { 
-    font-size: clamp(8px, 2vw, 11px); 
+    font-size: clamp(10px, 2vw, 12px); 
     text-align: center; 
     
     margin-block: 1rem .5rem;
