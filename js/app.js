@@ -15,7 +15,7 @@ var dCurrent = date.getDate();
 var mCurrent = 1 + date.getMonth();
 var yCurrent = date.getFullYear();
 
-const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const months = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const submit = document.querySelector("#user-submit");
 
 // validate input
@@ -62,47 +62,71 @@ function validateInput() {
         yError.innerHTML = "";
     }
   };
-}
+};
 
 // handle submit
+let d = 0;
+let m = 0;
+
 function handleSubmit() {
 
+    // check calendar validity
+    if (dUser.value > months[mUser.value-1]) {
+        document.querySelector("#user-day").classList.add("error");
+        dError.innerHTML = "Must be a valid day";
+        dOut.innerHTML = "--";
+        mOut.innerHTML = "--";
+        yOut.innerHTML = "--";
+        return;
+    } else if (mUser > 12) {
+        return;
+    } else if (yUser > yCurrent) {
+        return;
+    };
 
-    if (dCurrent - dUser < 0) {
-        mCurrent -= 1;
-    } else if (mCurrent - mUser < 0 ){
-        yCurrent - 1;
-    }
     // day submit
     if (dUser.value == "" || dUser.value == 0) {
         document.querySelector("#user-day").classList.add("error");
         dError.innerHTML = "This field is required";
-        dOut.innerHTML = "--";
+        return;
     } else {
-        let d = dCurrent - dUser.value;
-        dOut.innerHTML = d;
+        d = dCurrent - dUser.value;
     }
 
     // month submit
     if (mUser.value == "" || mUser.value == 0) {
         document.querySelector("#user-month").classList.add("error");
         mError.innerHTML = "This field is required";
-        mOut.innerHTML = "--";
+        return;
     } else {
-        let m = mCurrent - mUser.value;
-        mOut.innerHTML = m;
+        m = mCurrent - mUser.value;
     }
 
     // year submit
     if (yUser.value == "") {
         document.querySelector("#user-year").classList.add("error");
         yError.innerHTML = "This field is required";
-        yOut.innerHTML = "--";
-    } else {
-        let y = yCurrent - yUser.value;
-        yOut.innerHTML = y;
+        return;
     }
     
+    // calculate age
+    if (d < 0) {
+        dCurrent = dCurrent + months[mCurrent - 1];
+        mCurrent -= 1;
+    } 
+    if (m < 0) {
+        mCurrent += 12;
+        yCurrent -= 1;
+    }
+    
+    const dResult = dCurrent - dUser.value;
+    const mResult = mCurrent - mUser.value;
+    const yResult = yCurrent - yUser.value;
+    
+    dOut.innerHTML = dResult;
+    mOut.innerHTML = mResult;
+    yOut.innerHTML = yResult;
+
     // if (dUser.value > dCurrent) {
     //     dCurrent = dCurrent + months[mCurrent - 1];
     //     mCurrent = mCurrent - 1;
@@ -112,13 +136,6 @@ function handleSubmit() {
     //     yCurrent = yCurrent - 1;
     // }
 
-    // const m = mCurrent - mUser.value;
-    // const y = yCurrent - yUser.value;
-
-    // mOut.innerHTML = m;
-    // yOut.innerHTML = y;
     
 };
 validateInput();
-// submit
-// submit.addEventListener('submit', handleSubmit());
