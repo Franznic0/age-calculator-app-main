@@ -90,7 +90,7 @@ function handleSubmit() {
         return;
     } else {
         d = dCurrent - dUser.value;
-    }
+    };
 
     // month submit
     if (mUser.value == "" || mUser.value == 0) {
@@ -99,15 +99,20 @@ function handleSubmit() {
         return;
     } else {
         m = mCurrent - mUser.value;
-    }
+    };
 
     // year submit
     if (yUser.value == "") {
         document.querySelector("#user-year").classList.add("error");
         yError.innerHTML = "This field is required";
         return;
-    }
+    };
 
+    calculateAge();
+    resetCurrentDate();
+};
+
+function calculateAge () {
     // calculate age
     if (d < 0) {
         dCurrent = dCurrent + months[mUser.value-1];
@@ -127,4 +132,11 @@ function handleSubmit() {
     mOut.innerHTML = mResult;
     yOut.innerHTML = yResult;
 };
+
+function resetCurrentDate () {
+    dCurrent = date.getDate();
+    mCurrent = 1 + date.getMonth();
+    yCurrent = date.getFullYear();
+}
+
 validateInput();
